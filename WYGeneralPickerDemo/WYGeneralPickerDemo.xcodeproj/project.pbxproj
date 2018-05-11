@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		304095D4CBCE3E96ECBEC3D3 /* libPods-WYGeneralPickerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DEB15B7C4CC6634ECA40EA /* libPods-WYGeneralPickerDemo.a */; };
 		932C310B20A539380079BA6E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C310A20A539380079BA6E /* AppDelegate.m */; };
 		932C310E20A539380079BA6E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 932C310D20A539380079BA6E /* ViewController.m */; };
 		932C311120A539380079BA6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932C310F20A539380079BA6E /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CBA136355B5A5BBE2BF2C72 /* Pods-WYGeneralPickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYGeneralPickerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WYGeneralPickerDemo/Pods-WYGeneralPickerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		932C310620A539380079BA6E /* WYGeneralPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYGeneralPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932C310920A539380079BA6E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		932C310A20A539380079BA6E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		932C311520A539390079BA6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		932C311720A539390079BA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932C311820A539390079BA6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B312B1FE4CD08D5B1F4F69F5 /* Pods-WYGeneralPickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYGeneralPickerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYGeneralPickerDemo/Pods-WYGeneralPickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E0DEB15B7C4CC6634ECA40EA /* libPods-WYGeneralPickerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WYGeneralPickerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				304095D4CBCE3E96ECBEC3D3 /* libPods-WYGeneralPickerDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		299686AF23F14EADACB25547 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B312B1FE4CD08D5B1F4F69F5 /* Pods-WYGeneralPickerDemo.debug.xcconfig */,
+				0CBA136355B5A5BBE2BF2C72 /* Pods-WYGeneralPickerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		790A9BAF6FA34CBF399639C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0DEB15B7C4CC6634ECA40EA /* libPods-WYGeneralPickerDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		932C30FD20A539380079BA6E = {
 			isa = PBXGroup;
 			children = (
 				932C310820A539380079BA6E /* WYGeneralPickerDemo */,
 				932C310720A539380079BA6E /* Products */,
+				299686AF23F14EADACB25547 /* Pods */,
+				790A9BAF6FA34CBF399639C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 932C311C20A539390079BA6E /* Build configuration list for PBXNativeTarget "WYGeneralPickerDemo" */;
 			buildPhases = (
+				76F0A50744B18B3525D86593 /* [CP] Check Pods Manifest.lock */,
 				932C310220A539380079BA6E /* Sources */,
 				932C310320A539380079BA6E /* Frameworks */,
 				932C310420A539380079BA6E /* Resources */,
+				0213C82E66BAAAAC6DFABB45 /* [CP] Embed Pods Frameworks */,
+				D08E7D2BD9F4B24650C0C3E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0213C82E66BAAAAC6DFABB45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYGeneralPickerDemo/Pods-WYGeneralPickerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76F0A50744B18B3525D86593 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WYGeneralPickerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D08E7D2BD9F4B24650C0C3E2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYGeneralPickerDemo/Pods-WYGeneralPickerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		932C310220A539380079BA6E /* Sources */ = {
@@ -281,15 +359,13 @@
 		};
 		932C311D20A539390079BA6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B312B1FE4CD08D5B1F4F69F5 /* Pods-WYGeneralPickerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WDSNS842MX;
 				INFOPLIST_FILE = WYGeneralPickerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyanassert.generalPicker.WYGeneralPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,15 +374,13 @@
 		};
 		932C311E20A539390079BA6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CBA136355B5A5BBE2BF2C72 /* Pods-WYGeneralPickerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WDSNS842MX;
 				INFOPLIST_FILE = WYGeneralPickerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyanassert.generalPicker.WYGeneralPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
