@@ -6,6 +6,8 @@ target 'WYGeneralPickerDemo' do
   # use_frameworks!
 
   # Pods for WYGeneralPickerDemo
+  pod 'Reveal-SDK', '~> 14', :configurations => ['Debug']
+  
   pod 'WYGeneralPicker', :path => '../'
 
 end
