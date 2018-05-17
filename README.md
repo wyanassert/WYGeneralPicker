@@ -54,3 +54,7 @@ A simple replacement of [ActionSheetPicker-3.0](!https://github.com/skywinder/Ac
 
                        }];
 ```
+### Screenshots
+![DatePicker](Resource/image0.png)
+![StringPicker](Resource/image1.png)
+![MultipleStringPicker](Resource/image2.png)
