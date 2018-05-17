@@ -1,3 +1,7 @@
+[![Version](http://img.shields.io/cocoapods/v/WYGeneralPicker.svg)](https://cocoapods.org/pods/WYGeneralPicker)
+[![License](https://img.shields.io/cocoapods/l/WYGeneralPicker.svg)](https://cocoapods.org/pods/WYGeneralPicker)
+[![Platform](https://img.shields.io/cocoapods/p/WYGeneralPicker.svg)](http://cocoadocs.org/docsets/WYGeneralPicker)
+
 ## WYGeneralPicker
 Support DatePicker, StringPicker and MultipleStringPicker.
 
@@ -10,6 +14,10 @@ A simple replacement of [ActionSheetPicker-3.0](!https://github.com/skywinder/Ac
 ### How To Use
 
 1. first step
+
+ `pod WYGeneralPicker`
+
+    and then
 
  `#import "ViewController.h"`
 
