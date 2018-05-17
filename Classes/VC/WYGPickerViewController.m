@@ -17,6 +17,7 @@ WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
 
 @property (nonatomic, assign) WYGPickerType         pickerType;
 
+@property (nonatomic, strong) UIView                      *shadowView;
 @property (nonatomic, strong) WYGPickerBottomView         *bottomView;
 
 @end
@@ -26,8 +27,6 @@ WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
 - (instancetype)initWithPickerType:(WYGPickerType)pickerType {
     if(self = [super init]) {
         _pickerType = pickerType;
-        self.view.backgroundColor = [UIColor clearColor];
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
     }
     return self;
 }
@@ -44,28 +43,74 @@ WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self configShowAnimate];
+}
+
 #pragma mark - Private
 - (void)configView {
 //    self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     [self.view setFrame:[UIScreen mainScreen].bounds];
     
+    [self.view addSubview:self.shadowView];
     [self.view addSubview:self.bottomView];
     
+}
+
+- (void)configShowAnimate {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.shadowView.alpha = 0.3;
+        
+        self.bottomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 220, [UIScreen mainScreen].bounds.size.width, 220);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)configDismissAnimate:(void (^)(void))block {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.shadowView.alpha = 0.0;
+        
+        self.bottomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 220);
+    } completion:^(BOOL finished) {
+        if(block) {
+            block();
+        }
+    }];
 }
 
 
 #pragma mark - Action
 - (void)userDidCancelPicker {
     
-    [self dismissViewControllerAnimated:NO completion:nil];
+    __weak typeof(self)weakSelf = self;
+    [self configDismissAnimate:^{
+        __strong typeof(weakSelf)self = weakSelf;
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }];
 }
 
 - (void)userDidConfirmPicker {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    __weak typeof(self)weakSelf = self;
+    [self configDismissAnimate:^{
+        __strong typeof(weakSelf)self = weakSelf;
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }];
 }
 
 
 #pragma mark - Getter
+- (UIView *)shadowView {
+    if(!_shadowView) {
+        _shadowView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _shadowView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+        _shadowView.alpha = 0;
+    }
+    return _shadowView;
+}
+
 - (WYGPickerBottomView *)bottomView {
     if(!_bottomView) {
         if([self.pickerType isEqualToString:WYGPickerTypeDate]) {
@@ -79,19 +124,15 @@ WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
             if(self.minimumDate) {
                 ((WYGPickerDateBottomView *)_bottomView).datePicker.minimumDate = self.minimumDate;
             }
-            if(self.datePickerMode) {
-                ((WYGPickerDateBottomView *)_bottomView).datePicker.datePickerMode = self.datePickerMode;
-            }
+            ((WYGPickerDateBottomView *)_bottomView).datePicker.datePickerMode = self.datePickerMode;
         } else if ([self.pickerType isEqualToString:WYGPickerTypeString]) {
             _bottomView = [[WYGPickerStringBottomView alloc] initWithStringList:self.strList];
-            if(self.initialSelectedStr) {
-                NSUInteger index = [self.strList indexOfObject:self.initialSelectedStr];
-                if(index && index != NSNotFound) {
-                    [((WYGPickerStringBottomView *)_bottomView).pickerView selectRow:index inComponent:0 animated:NO];
-                }
+            if(self.initialSelectedIndex && self.initialSelectedIndex < self.strList.count) {
+                [((WYGPickerStringBottomView *)_bottomView).pickerView selectRow:self.initialSelectedIndex inComponent:0 animated:NO];
             }
         }
-        _bottomView = [[WYGPickerBottomView alloc] init];
+        _bottomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 220);
+        _bottomView.title = self.pickerTitle;
         __weak typeof(self)weakSelf = self;
         _bottomView.cancelBlock = ^{
             __strong typeof(weakSelf)self = weakSelf;

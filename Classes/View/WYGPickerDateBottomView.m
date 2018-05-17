@@ -43,9 +43,6 @@
     if(!_datePicker) {
         _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 180)];
         _datePicker.locale = [NSLocale currentLocale];
-        [_datePicker setMinimumDate:[NSDate date]];
-        [_datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(3600 * 24 * 30)]];
-        [_datePicker setDate:[NSDate date]];
         _datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     }
     return _datePicker;

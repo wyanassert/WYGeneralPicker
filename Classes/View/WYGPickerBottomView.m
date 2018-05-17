@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIView   *lineView;
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UILabel  *titleLabel;
 
 @end
 
@@ -39,6 +40,7 @@
     [self addSubview:self.lineView];
     [self addSubview:self.doneButton];
     [self addSubview:self.cancelButton];
+    [self addSubview:self.titleLabel];
 }
 
 
@@ -53,6 +55,10 @@
     if(self.cancelBlock) {
         self.cancelBlock();
     }
+}
+
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
 }
 
 
@@ -84,13 +90,24 @@
         UIButton *btn = [UIButton new];
         [btn setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 16 - WYGPickerButtonWidth, 10, WYGPickerButtonWidth, 24)];
         [btn setBackgroundColor:[UIColor clearColor]];
-        [btn setTitle:@"DONE" forState:UIControlStateNormal];
+        [btn setTitle:NSLocalizedString(@"DONE", nil) forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [btn addTarget:self action:@selector(doneAction) forControlEvents:UIControlEventTouchUpInside];
         _doneButton = btn;
     }
     return _doneButton;
+}
+
+- (UILabel *)titleLabel {
+    if(!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100, 10, 200, 24)];
+        _titleLabel.text = NSLocalizedString(@"", nil);
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        _titleLabel.textColor = [UIColor blackColor];
+    }
+    return _titleLabel;
 }
 
 @end

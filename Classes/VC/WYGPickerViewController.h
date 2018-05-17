@@ -16,11 +16,12 @@ extern WYGPickerType const WYGPickerTypeString;
 
 - (instancetype)initWithPickerType:(WYGPickerType)pickerType;
 
-@property (nonatomic, assign, readonly) WYGPickerType         pickerType;
+@property (nonatomic, assign, readonly) WYGPickerType     pickerType;
+@property (nonatomic, strong) NSString                    *pickerTitle;
 
 //String
 @property (nonatomic, strong) NSArray<NSString *>         *strList;
-@property (nonatomic, strong) NSString                    *initialSelectedStr;
+@property (nonatomic, assign) NSUInteger                  initialSelectedIndex;
 
 //Date
 @property (nonatomic, assign) UIDatePickerMode            datePickerMode;

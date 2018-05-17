@@ -14,8 +14,57 @@
     WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeDate];
     vc.currentDate = date;
     vc.datePickerMode = pickerMode;
+    vc.pickerTitle = title;
     
-    [WYGeneralPicker getTopMostVC].definesPresentationContext = YES;
+    UIViewController *topVC = [WYGeneralPicker getTopMostVC];
+    
+    UIGraphicsBeginImageContextWithOptions(topVC.view.frame.size, NO, 0);
+    [topVC.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    vc.view.backgroundColor = [UIColor colorWithPatternImage:image];
+
+    
+    [[WYGeneralPicker getTopMostVC] presentViewController:vc animated:NO completion:nil];
+}
+
++ (void)showPickerWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)pickerMode selectedDate:(NSDate *)date minimumDate:(NSDate *)minimumDate maximumDate:(NSDate *)maximumDate doneBlock:(void (^)(NSDate *))doneBlock cancelBlock:(void (^)(void))cancelBlock {
+    WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeDate];
+    vc.currentDate = date;
+    vc.datePickerMode = pickerMode;
+    vc.pickerTitle = title;
+    vc.maximumDate = maximumDate;
+    vc.minimumDate = minimumDate;
+    
+    UIViewController *topVC = [WYGeneralPicker getTopMostVC];
+    
+    UIGraphicsBeginImageContextWithOptions(topVC.view.frame.size, NO, 0);
+    [topVC.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    vc.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
+    [[WYGeneralPicker getTopMostVC] presentViewController:vc animated:NO completion:nil];
+}
+
+
+#pragma mark - String
++ (void)showPickerWithTitle:(NSString *)title rows:(NSArray<NSString *> *)rows initialSelection:(NSUInteger)selection doneBlock:(void (^)(NSDate *))doneBlock cancelBlock:(void (^)(void))cancelBlock {
+    WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeString];
+    vc.pickerTitle = title;
+    vc.strList = rows;
+    vc.initialSelectedIndex = selection;
+    
+    UIViewController *topVC = [WYGeneralPicker getTopMostVC];
+    
+    UIGraphicsBeginImageContextWithOptions(topVC.view.frame.size, NO, 0);
+    [topVC.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    vc.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
     [[WYGeneralPicker getTopMostVC] presentViewController:vc animated:NO completion:nil];
 }
 

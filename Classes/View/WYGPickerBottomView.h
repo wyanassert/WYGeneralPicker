@@ -12,6 +12,8 @@
 @property (nonatomic, copy) void(^doneBlock)(void);
 @property (nonatomic, copy) void(^cancelBlock)(void);
 
+@property (nonatomic, strong) NSString  *title;
+
 - (void)configView;
 
 @end

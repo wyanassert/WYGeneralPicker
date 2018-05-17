@@ -25,6 +25,14 @@
     return self;
 }
 
+#pragma mark - Private
+- (void)configView {
+    [super configView];
+    
+    [self addSubview:self.pickerView];
+}
+
+
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return self.strList.count;
@@ -48,7 +56,7 @@
 #pragma mark - Getter
 - (UIPickerView *)pickerView {
     if(!_pickerView) {
-        _pickerView = [[UIPickerView alloc] init];
+        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 180)];
         _pickerView.dataSource = self;
         _pickerView.delegate = self;
     }

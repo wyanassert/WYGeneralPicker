@@ -15,24 +15,46 @@
 
 @implementation ViewController
 
+- (instancetype)init {
+    if(self = [super init]) {
+        self.view.backgroundColor = [UIColor blueColor];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
     
-    UILabel *lb = [UILabel new];
-    lb.frame = CGRectMake(100, 100, 100, 100);
-    lb.text = @"ksvbckjabc";
-    lb.textColor = [UIColor redColor];
-    lb.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:lb];
+    {
+        UILabel *lb = [UILabel new];
+        lb.frame = CGRectMake(100, 100, 100, 100);
+        lb.text = @"ksvbckjabc";
+        lb.textColor = [UIColor redColor];
+        lb.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:lb];
+    }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [WYGeneralPicker showPickerWithTitle:@"Select Date" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date] doneBlock:^(NSDate *date) {
-            
-        } cancelBlock:^{
-            
-        }];
-    });
+    {
+        UIButton *btn = [UIButton new];
+        btn.frame = CGRectMake(100, 200, 100, 100);
+        [btn setBackgroundColor:[UIColor redColor]];
+        [btn setTitle:@"Show picker" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(showAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+    }
+    
+    {
+        UIButton *btn = [UIButton new];
+        btn.frame = CGRectMake(100, 300, 100, 100);
+        [btn setBackgroundColor:[UIColor blueColor]];
+        [btn setTitle:@"Strings" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(showStrings) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+    }
 }
 
 
@@ -41,5 +63,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Action
+- (void)showAction {
+    [WYGeneralPicker showPickerWithTitle:@"Select Date" datePickerMode:UIDatePickerModeDateAndTime selectedDate:[NSDate date] minimumDate:[NSDate dateWithTimeIntervalSinceNow:-(3600*24 * 3)] maximumDate:[NSDate dateWithTimeIntervalSinceNow:(3600*24 * 3)] doneBlock:^(NSDate *date) {
+        
+    } cancelBlock:^{
+        
+    }];
+}
+
+- (void)showStrings {
+    NSUInteger index = [[NSTimeZone knownTimeZoneNames] indexOfObject:[NSTimeZone localTimeZone].name];
+    [WYGeneralPicker showPickerWithTitle:@"Time Zone" rows:[NSTimeZone knownTimeZoneNames] initialSelection:index doneBlock:^(NSDate *date) {
+        
+    } cancelBlock:^{
+        
+    }];
+}
 
 @end
