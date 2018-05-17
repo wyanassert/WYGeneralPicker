@@ -11,22 +11,27 @@ typedef NSString* WYGPickerType;
 
 extern WYGPickerType const WYGPickerTypeDate;
 extern WYGPickerType const WYGPickerTypeString;
+extern WYGPickerType const WYGPickerTypeMultipleString;
 
 @interface WYGPickerViewController : UIViewController
 
 - (instancetype)initWithPickerType:(WYGPickerType)pickerType;
 
-@property (nonatomic, assign, readonly) WYGPickerType     pickerType;
-@property (nonatomic, strong) NSString                    *pickerTitle;
-
-//String
-@property (nonatomic, strong) NSArray<NSString *>         *strList;
-@property (nonatomic, assign) NSUInteger                  initialSelectedIndex;
+@property (nonatomic, assign, readonly) WYGPickerType    pickerType;
+@property (nonatomic, strong          ) NSString         *pickerTitle;
 
 //Date
-@property (nonatomic, assign) UIDatePickerMode            datePickerMode;
-@property (nonatomic, strong) NSDate                      *currentDate;
-@property (nonatomic, strong) NSDate                      *minimumDate;
-@property (nonatomic, strong) NSDate                      *maximumDate;
+@property (nonatomic, assign          ) UIDatePickerMode datePickerMode;
+@property (nonatomic, strong          ) NSDate           *currentDate;
+@property (nonatomic, strong          ) NSDate           *minimumDate;
+@property (nonatomic, strong          ) NSDate           *maximumDate;
+
+//String
+@property (nonatomic, strong          ) NSArray<NSString *> *strList;
+@property (nonatomic, assign          ) NSUInteger          initialSelectedIndex;
+
+//Multiple String
+@property (nonatomic, strong          ) NSArray<NSArray<NSString*> *> *mulStrList;
+@property (nonatomic, strong          ) NSArray<NSNumber           *> *mulSelections;
 
 @end

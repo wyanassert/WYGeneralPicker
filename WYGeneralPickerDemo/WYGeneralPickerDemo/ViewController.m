@@ -74,12 +74,19 @@
 }
 
 - (void)showStrings {
-    NSUInteger index = [[NSTimeZone knownTimeZoneNames] indexOfObject:[NSTimeZone localTimeZone].name];
-    [WYGeneralPicker showPickerWithTitle:@"Time Zone" rows:[NSTimeZone knownTimeZoneNames] initialSelection:index doneBlock:^(NSDate *date) {
-        
-    } cancelBlock:^{
-        
-    }];
+//    NSUInteger index = [[NSTimeZone knownTimeZoneNames] indexOfObject:[NSTimeZone localTimeZone].name];
+//    [WYGeneralPicker showPickerWithTitle:@"Time Zone" rows:[NSTimeZone knownTimeZoneNames] initialSelection:index doneBlock:^(NSDate *date) {
+//
+//    } cancelBlock:^{
+//
+//    }];
+    [WYGeneralPicker showPickerWithTitle:@"Multiple Title" multipleRows:@[@[@"row0", @"row1", @"row0", @"row1", @"row0", @"row1"],
+                                                                          @[@"row2", @"row3", @"row4", @"row2", @"row3", @"row4"],
+                                                                          @[@"row5", @"row6", @"row7", @"row8", @"row9", @"row0"]] initialSelections:@[@(2), @(5), @(0)] doneBlock:^(NSArray<NSString *> *selectedStrArray) {
+                                                                              
+                                                                          } cancelBlock:^{
+                                                                              
+                                                                          }];
 }
 
 @end

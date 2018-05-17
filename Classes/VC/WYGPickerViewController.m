@@ -9,9 +9,11 @@
 #import "WYGPickerBottomView.h"
 #import "WYGPickerDateBottomView.h"
 #import "WYGPickerStringBottomView.h"
+#import "WYGPickerMultipleStringBottomView.h"
 
 WYGPickerType const WYGPickerTypeDate = @"WYGPickerTypeDate";
 WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
+WYGPickerType const WYGPickerTypeMultipleString = @"WYGPickerTypeMultipleString";
 
 @interface WYGPickerViewController ()
 
@@ -129,6 +131,16 @@ WYGPickerType const WYGPickerTypeString = @"WYGPickerTypeString";
             _bottomView = [[WYGPickerStringBottomView alloc] initWithStringList:self.strList];
             if(self.initialSelectedIndex && self.initialSelectedIndex < self.strList.count) {
                 [((WYGPickerStringBottomView *)_bottomView).pickerView selectRow:self.initialSelectedIndex inComponent:0 animated:NO];
+            }
+        } else if ([self.pickerType isEqualToString:WYGPickerTypeMultipleString]) {
+            _bottomView = [[WYGPickerMultipleStringBottomView alloc] initWithMultiStringList:self.mulStrList andInitialSelections:self.mulSelections];
+            NSArray<NSNumber *> * selections = self.mulSelections;
+            
+            for (NSUInteger idx = 0; idx < selections.count; idx++) {
+                NSNumber *obj = selections[idx];
+                if(idx < self.mulStrList.count && obj.unsignedIntegerValue < self.mulStrList[idx].count) {
+                    [((WYGPickerMultipleStringBottomView *)_bottomView).pickerView selectRow:obj.unsignedIntegerValue inComponent:idx animated:NO];
+                }
             }
         }
         _bottomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 220);
