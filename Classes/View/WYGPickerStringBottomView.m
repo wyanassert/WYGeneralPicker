@@ -18,9 +18,10 @@
 
 @implementation WYGPickerStringBottomView
 
-- (instancetype)initWithStringList:(NSArray<NSString *> *)strList {
+- (instancetype)initWithStringList:(NSArray<NSString *> *)strList andInitialIndex:(NSUInteger)index {
     if(self = [super init]) {
         _strList = strList;
+        _selectIndex = index;
     }
     return self;
 }
@@ -30,6 +31,26 @@
     [super configView];
     
     [self addSubview:self.pickerView];
+}
+
+- (void)doneAction {
+    [super doneAction];
+    
+    if(self.userDoneBlock) {
+        NSString *result = @"";
+        if(self.selectIndex < self.strList.count) {
+            result  = self.strList[self.selectIndex];
+        }
+        self.userDoneBlock(result);
+    }
+}
+
+- (void)cancelAction {
+    [super cancelAction];
+    
+    if(self.userCancelBlock) {
+        self.userCancelBlock();
+    }
 }
 
 

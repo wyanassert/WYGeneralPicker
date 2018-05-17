@@ -12,6 +12,8 @@
 
 + (void)showPickerWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)pickerMode selectedDate:(NSDate *)date doneBlock:(WYGPickerDateBlock)doneBlock cancelBlock:(WYGPockerCancelBlock)cancelBlock {
     WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeDate];
+    vc.doneBlock = doneBlock;
+    vc.cancelBlock = cancelBlock;
     vc.currentDate = date;
     vc.datePickerMode = pickerMode;
     vc.pickerTitle = title;
@@ -23,6 +25,8 @@
 
 + (void)showPickerWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)pickerMode selectedDate:(NSDate *)date minimumDate:(NSDate *)minimumDate maximumDate:(NSDate *)maximumDate doneBlock:(WYGPickerDateBlock)doneBlock cancelBlock:(WYGPockerCancelBlock)cancelBlock {
     WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeDate];
+    vc.doneBlock = doneBlock;
+    vc.cancelBlock = cancelBlock;
     vc.currentDate = date;
     vc.datePickerMode = pickerMode;
     vc.pickerTitle = title;
@@ -38,6 +42,8 @@
 #pragma mark - String
 + (void)showPickerWithTitle:(NSString *)title rows:(NSArray<NSString *> *)rows initialSelection:(NSUInteger)selection doneBlock:(WYGPickerStringBlock)doneBlock cancelBlock:(WYGPockerCancelBlock)cancelBlock {
     WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeString];
+    vc.doneBlock = doneBlock;
+    vc.cancelBlock = cancelBlock;
     vc.pickerTitle = title;
     vc.strList = rows;
     vc.initialSelectedIndex = selection;
@@ -51,6 +57,8 @@
 #pragma mark - Multiple Strings
 + (void)showPickerWithTitle:(NSString *)title multipleRows:(NSArray<NSArray<NSString *> *> *)mulRows initialSelections:(NSArray<NSNumber *> *)selections doneBlock:(WYGPickerMulStringBlock)doneBlock cancelBlock:(WYGPockerCancelBlock)cancelBlock {
     WYGPickerViewController *vc = [[WYGPickerViewController alloc] initWithPickerType:WYGPickerTypeMultipleString];
+    vc.doneBlock = doneBlock;
+    vc.cancelBlock = cancelBlock;
     vc.pickerTitle = title;
     vc.mulStrList = mulRows;
     vc.mulSelections = selections;

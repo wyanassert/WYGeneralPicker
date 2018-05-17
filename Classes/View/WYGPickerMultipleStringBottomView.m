@@ -40,6 +40,30 @@
     [self addSubview:self.pickerView];
 }
 
+- (void)doneAction {
+    [super doneAction];
+    
+    if(self.userDoneBlock) {
+        NSMutableArray *result = [NSMutableArray array];
+        [self.selections enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if(obj.unsignedIntegerValue < self.mulStrList[idx].count) {
+                [result addObject:self.mulStrList[idx][obj.unsignedIntegerValue]];
+            } else {
+                [result addObject:@""];
+            }
+        }];
+        self.userDoneBlock([result copy]);
+    }
+}
+
+- (void)cancelAction {
+    [super cancelAction];
+    
+    if(self.userCancelBlock) {
+        self.userCancelBlock();
+    }
+}
+
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

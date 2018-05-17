@@ -6,6 +6,7 @@
 //
 
 #import "WYGPickerBottomView.h"
+#import "WYGeneralPicker.h"
 
 @interface WYGPickerMultipleStringBottomView : WYGPickerBottomView
 
@@ -13,5 +14,8 @@
 
 @property (nonatomic, strong, readonly) NSArray<NSArray<NSString*> *> *mulStrList;
 @property (nonatomic, strong, readonly) UIPickerView                  *pickerView;
+
+@property (nonatomic, copy) WYGPickerMulStringBlock         userDoneBlock;
+@property (nonatomic, copy) WYGPockerCancelBlock            userCancelBlock;
 
 @end

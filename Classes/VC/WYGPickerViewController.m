@@ -117,6 +117,8 @@ WYGPickerType const WYGPickerTypeMultipleString = @"WYGPickerTypeMultipleString"
     if(!_bottomView) {
         if([self.pickerType isEqualToString:WYGPickerTypeDate]) {
             _bottomView = [[WYGPickerDateBottomView alloc] init];
+            ((WYGPickerDateBottomView *)_bottomView).userDoneBlock = self.doneBlock;
+            ((WYGPickerDateBottomView *)_bottomView).userCancelBlock = self.cancelBlock;
             if(self.currentDate) {
                 ((WYGPickerDateBottomView *)_bottomView).datePicker.date = self.currentDate;
             }
@@ -128,12 +130,16 @@ WYGPickerType const WYGPickerTypeMultipleString = @"WYGPickerTypeMultipleString"
             }
             ((WYGPickerDateBottomView *)_bottomView).datePicker.datePickerMode = self.datePickerMode;
         } else if ([self.pickerType isEqualToString:WYGPickerTypeString]) {
-            _bottomView = [[WYGPickerStringBottomView alloc] initWithStringList:self.strList];
+            _bottomView = [[WYGPickerStringBottomView alloc] initWithStringList:self.strList andInitialIndex:self.initialSelectedIndex];
+            ((WYGPickerStringBottomView *)_bottomView).userDoneBlock = self.doneBlock;
+            ((WYGPickerStringBottomView *)_bottomView).userCancelBlock = self.cancelBlock;
             if(self.initialSelectedIndex && self.initialSelectedIndex < self.strList.count) {
                 [((WYGPickerStringBottomView *)_bottomView).pickerView selectRow:self.initialSelectedIndex inComponent:0 animated:NO];
             }
         } else if ([self.pickerType isEqualToString:WYGPickerTypeMultipleString]) {
             _bottomView = [[WYGPickerMultipleStringBottomView alloc] initWithMultiStringList:self.mulStrList andInitialSelections:self.mulSelections];
+            ((WYGPickerMultipleStringBottomView *)_bottomView).userDoneBlock = self.doneBlock;
+            ((WYGPickerMultipleStringBottomView *)_bottomView).userCancelBlock = self.cancelBlock;
             NSArray<NSNumber *> * selections = self.mulSelections;
             
             for (NSUInteger idx = 0; idx < selections.count; idx++) {

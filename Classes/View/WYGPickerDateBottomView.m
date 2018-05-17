@@ -37,6 +37,22 @@
     [self addSubview:self.datePicker];
 }
 
+- (void)doneAction {
+    [super doneAction];
+    
+    if(self.userDoneBlock) {
+        self.userDoneBlock(self.datePicker.date);
+    }
+}
+
+- (void)cancelAction {
+    [super cancelAction];
+    
+    if(self.userCancelBlock) {
+        self.userCancelBlock();
+    }
+}
+
 
 #pragma mark - Getter
 - (UIDatePicker *)datePicker {

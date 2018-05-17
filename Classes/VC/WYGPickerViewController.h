@@ -19,6 +19,8 @@ extern WYGPickerType const WYGPickerTypeMultipleString;
 
 @property (nonatomic, assign, readonly) WYGPickerType    pickerType;
 @property (nonatomic, strong          ) NSString         *pickerTitle;
+@property (nonatomic, copy            ) id               doneBlock;
+@property (nonatomic, copy            ) id               cancelBlock;
 
 //Date
 @property (nonatomic, assign          ) UIDatePickerMode datePickerMode;

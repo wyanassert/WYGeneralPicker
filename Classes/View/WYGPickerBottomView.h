@@ -15,5 +15,7 @@
 @property (nonatomic, strong) NSString  *title;
 
 - (void)configView;
+- (void)cancelAction;
+- (void)doneAction;
 
 @end
