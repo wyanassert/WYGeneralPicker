@@ -5,10 +5,10 @@
 ## WYGeneralPicker
 Support DatePicker, StringPicker and MultipleStringPicker.
 
-A simple replacement of [ActionSheetPicker-3.0](!https://github.com/skywinder/ActionSheetPicker-3.0)
+A simple replacement of [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
 
 * Why not use `ActionSheetPicker-3.0`?
-   see the issue [ActionSheetPicker popover selection is not working for iPad on iOS 11+](!https://github.com/skywinder/ActionSheetPicker-3.0/issues/384). So I just want to replace `ActionSheetPicker-3.0` easily if the issue not fixed.
+   see the issue [ActionSheetPicker popover selection is not working for iPad on iOS 11+](https://github.com/skywinder/ActionSheetPicker-3.0/issues/384). So I just want to replace `ActionSheetPicker-3.0` easily if the issue not fixed.
 ---
 
 ### How To Use
